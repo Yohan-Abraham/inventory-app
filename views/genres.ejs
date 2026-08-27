@@ -8,10 +8,30 @@
   </head>
   <body>
     <%- include('nav') %> 
-    <% genres.forEach((genre) => { %>
-        <form action="/genres/<%=genre.id%>" method="GET">
-            <button type="submit"><%= genre.name %></button>
-        </form>
+    <section>
+
+       <div class="section-header">
+      <h2>All Genres</h3>
+
+      
+      <a href="/genres/new" class="add">+ Add Genre</a>
+      
+    </div>
+
+      <div class="container">
+        <% genres.forEach((genre) => { %>
+          <div class="genre-card">
+            <div class="title">
+              <h4><%= genre.name %></h4>
+              <h4>Genre</h4>
+            </div>
+            <a class="details" href="/genres/<%=genre.id%>">Browse This Genre</a>
+            <a class="delete" href="/delete">Delete Genre</a>
+
+          </div>
     <% }) %>
+      </div>
+
+    </section>
   </body>
 </html>

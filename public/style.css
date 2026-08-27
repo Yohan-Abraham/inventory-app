@@ -51,6 +51,91 @@ a {
   color: #2563eb;
 }
 
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  gap: 2em;
+}
+
 .card {
   border: 1px solid #374151;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: 1fr 1fr 2fr 1fr;
+  align-items: center;
+
+  gap: 0.5em;
+  max-height: 300px;
+  padding: 2em;
+}
+
+.rating {
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: flex-end;
+  border: 1px solid #374151;
+  padding: 0.3em;
+}
+
+.release_year {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.description {
+  grid-column: 1/3;
+  grid-row: 3;
+}
+
+.additional-options {
+  grid-row: 4;
+  grid-column: 1/3;
+  display: flex;
+  justify-content: space-between;
+}
+
+.details,
+.add,
+.genre-card {
+  border: 1px solid #374151;
+  padding: 0.3em;
+}
+
+.delete {
+  border: 1px solid #ef4444;
+  padding: 0.3em;
+}
+
+.delete,
+.details {
+  text-align: center;
+  align-self: center;
+}
+
+section {
+  margin: 4em 5em;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2em;
+}
+
+.genre-card {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+
+  gap: 0.5em;
+  padding: 2em;
+}
+
+.title {
+  grid-row: 1;
+  grid-column: 1;
+  justify-self: center;
+  text-align: center;
+  font-size: larger;
 }

@@ -9,21 +9,37 @@
   <body>
     <%- include('nav') %>
 
-    <% movies.forEach(movie => { %>
+  <section>
 
-        <div class="card">
-            <h3><%= movie.title %></h3>
-            <p><%=movie.description%></p>
-            <div><%= movie.release_year %></div>
-            <div><%= movie.director %></div>
-            <div><%= movie.rating %></div>
+    <div class="section-header">
+      <h2>All Movies</h3>
 
-            <form action="/movies/<%= movie.id %>" method="GET">
-                <button type="submit">View Details</button>
-            </form>
+
+        <a href="/movies/new" class="add">+ Add Movie</a>
+
+    </div>
+
+    <div class="container">
+      <% movies.forEach(movie => { %>
+
+         <div class="card">
+            <h3 class="movie-title"><%= movie.title.toUpperCase() %></h3>
+            <p class="description"><%=movie.description%></p>
+            <div class="release_year"><%= movie.release_year %></div>
+           
+            <div class="rating"><%= movie.rating %></div>
+
+            <div class="additional-options">
+              <a class="details" href="/movies/<%= movie.id %>">Details</a>
+              <a class="delete" href="/delete">Delete</a>
+            </div>
 
         </div>
 
     <% }) %>
+    </div>
+
+  </section>
+
   </body>
 </html>

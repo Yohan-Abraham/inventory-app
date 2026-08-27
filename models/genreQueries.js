@@ -5,6 +5,10 @@ async function getAllGenres() {
   return rows;
 }
 
+async function getGenreById(id) {
+  return await pool.query('SELECT name from category WHERE id = $1', [id]);
+}
+
 async function getMoviesByGenre(id) {
   const { rows } = await pool.query(
     `SELECT movie.*
@@ -36,4 +40,5 @@ module.exports = {
   addGenre,
   updateGenre,
   deleteGenre,
+  getGenreById,
 };

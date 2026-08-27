@@ -4,6 +4,7 @@ const {
   addGenre,
   updateGenre,
   deleteGenre,
+  getGenreById,
 } = require('../models/genreQueries');
 
 module.exports = {
@@ -19,7 +20,7 @@ module.exports = {
       return res.status(400).send('Invalid genre ID');
     }
     const movies = await getMoviesByGenre(id);
-    console.log(movies);
-    res.render('genreInfo', { movies });
+    const genre = await getGenreById(id);
+    res.render('genreInfo', { movies, genre: genre.rows[0].name });
   },
 };
