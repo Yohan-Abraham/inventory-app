@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>movie inventory</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <%- include('nav') %>
+
+    <% movies.forEach(movie => { %>
+
+        <div class="card">
+            <h3><%= movie.title %></h3>
+            <p><%=movie.description%></p>
+            <div><%= movie.release_year %></div>
+            <div><%= movie.director %></div>
+            <div><%= movie.rating %></div>
+
+            <form action="/movies/<%= movie.id %>" method="GET">
+                <button type="submit">View Details</button>
+            </form>
+
+        </div>
+
+    <% }) %>
+  </body>
+</html>

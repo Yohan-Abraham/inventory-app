@@ -1,0 +1,56 @@
+/* Main background      #0F172A
+Navbar / sidebar     #111827
+Cards                #1F2937
+Card hover           #273449
+Borders              #374151
+
+Main text            #F8FAFC
+Secondary text       #CBD5E1
+Muted text           #94A3B8
+
+Primary buttons      #3B82F6
+Button hover         #2563EB
+Delete / danger      #EF4444
+Success              #22C55E */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #0f172a;
+  color: #f8fafc;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  padding: 2em 5em;
+  justify-content: space-between;
+  background-color: #111827;
+  border-bottom: 1px solid white;
+}
+
+a {
+  text-decoration: none;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+}
+
+.nav-container a {
+  margin-left: 2em;
+}
+
+.nav-links {
+  font-size: larger;
+}
+
+.nav-links:hover {
+  color: #2563eb;
+}
+
+.card {
+  border: 1px solid #374151;
+}

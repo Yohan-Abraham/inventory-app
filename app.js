@@ -1,10 +1,10 @@
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 const path = require('node:path');
 const indexRouter = require('./routes/indexRouter');
-const movieRouter = require('./controllers/movieController');
-const genreRouter = require('./controllers/genreController');
+const movieRouter = require('./routes/movieRouter');
+const genreRouter = require('./routes/genreRouter');
 
 // app.js
 app.set('views', path.join(__dirname, 'views'));
@@ -14,11 +14,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/movies', movieRouter);
-app.use('./genres', genreRouter);
+app.use('/genres', genreRouter);
 
-app.listen(port, (err) => {
+app.listen(PORT, (err) => {
   if (err) {
     console.log(err);
   }
-  console.log(`Listening to port ${port}`);
+  console.log(`Listening to port ${PORT}`);
 });

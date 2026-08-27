@@ -62,6 +62,6 @@ module.exports = {
   getAllMovies,
   addMovie,
   removeMovie,
-  getMovieDetail,
+  getMovieDetails,
   updateMovie,
 };

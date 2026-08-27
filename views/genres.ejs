@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
-    <%- include('nav') %>
+    <%- include('nav') %> 
+    <% genres.forEach((genre) => { %>
+        <form action="/genres/<%=genre.id%>" method="GET">
+            <button type="submit"><%= genre.name %></button>
+        </form>
+    <% }) %>
   </body>
 </html>
