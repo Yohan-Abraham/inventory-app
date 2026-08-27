@@ -23,4 +23,12 @@ module.exports = {
     const genre = await getGenreById(id);
     res.render('genreInfo', { movies, genre: genre.rows[0].name });
   },
+
+  displayAddPage: (req, res) => {
+    res.render('addGenre');
+  },
+
+  displayDeletePage: (req, res) => {
+    res.render('deleteGenre');
+  },
 };

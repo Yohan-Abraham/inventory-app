@@ -5,6 +5,7 @@ const {
   getMovieDetails,
   updateMovie,
 } = require('../models/movieQueries');
+const { displayAddPage } = require('./genreController');
 
 module.exports = {
   displayAllMovies: async (req, res) => {
@@ -17,5 +18,13 @@ module.exports = {
     const movie = await getMovieDetails(id);
     console.log(movie);
     res.render('movieInfo', { movie });
+  },
+
+  displayAddPage: (req, res) => {
+    res.render('addMovie');
+  },
+
+  displayDeletePage: (req, res) => {
+    res.render('deleteMovie');
   },
 };
