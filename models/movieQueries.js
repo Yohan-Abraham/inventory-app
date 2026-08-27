@@ -57,3 +57,11 @@ async function updateMovie(
     [title, description, release_year, director, rating, id],
   );
 }
+
+module.exports = {
+  getAllMovies,
+  addMovie,
+  removeMovie,
+  getMovieDetail,
+  updateMovie,
+};
