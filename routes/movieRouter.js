@@ -6,7 +6,11 @@ movieRouter.get('/', controller.displayAllMovies);
 
 movieRouter.get('/new', controller.displayAddPage);
 
+movieRouter.post('/new', controller.addMovie);
+
 movieRouter.get('/delete/:id', controller.displayDeletePage);
+
+movieRouter.post('/delete/:id', controller.deleteMovie);
 
 movieRouter.get('/:id', controller.getMovieInfo);
 

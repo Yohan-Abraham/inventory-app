@@ -27,4 +27,16 @@ module.exports = {
   displayDeletePage: (req, res) => {
     res.render('deleteMovie');
   },
+
+  addMovie: async (req, res) => {
+    const { title, rating, release_year, director, description } = req.body;
+    await addMovie(title, description, release_year, director, rating);
+    res.redirect('/movies');
+  },
+
+  deleteMovie: async (req, res) => {
+    const { id } = req.params;
+    await removeMovie(id);
+    res.redirect('/movies');
+  },
 };
