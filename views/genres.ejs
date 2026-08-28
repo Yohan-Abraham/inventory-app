@@ -22,8 +22,8 @@
         <% genres.forEach((genre) => { %>
           <div class="genre-card">
             <div class="title">
-              <h4><%= genre.name %></h4>
-              <h4>Genre</h4>
+              <h4><%= genre.name.toUpperCase() %></h4>
+              <h4>GENRE</h4>
             </div>
             <a class="details" href="/genres/<%=genre.id%>">Browse This Genre</a>
             <a class="delete" href="/genres/delete/<%=genre.id%>">Delete Genre</a>

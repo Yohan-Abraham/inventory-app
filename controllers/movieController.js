@@ -5,7 +5,8 @@ const {
   getMovieDetails,
   updateMovie,
 } = require('../models/movieQueries');
-const { displayAddPage } = require('./genreController');
+
+const { getAllGenres } = require('../models/genreQueries');
 
 module.exports = {
   displayAllMovies: async (req, res) => {
@@ -16,12 +17,12 @@ module.exports = {
   getMovieInfo: async (req, res) => {
     const { id } = req.params;
     const movie = await getMovieDetails(id);
-    console.log(movie);
     res.render('movieInfo', { movie });
   },
 
-  displayAddPage: (req, res) => {
-    res.render('addMovie');
+  displayAddPage: async (req, res) => {
+    const genres = await getAllGenres();
+    res.render('addMovie', { genres });
   },
 
   displayDeletePage: (req, res) => {
@@ -30,7 +31,19 @@ module.exports = {
 
   addMovie: async (req, res) => {
     const { title, rating, release_year, director, description } = req.body;
-    await addMovie(title, description, release_year, director, rating);
+    const category = Array.isArray(req.body.category)
+      ? req.body.category
+      : [req.body.category];
+
+    console.log(category);
+    await addMovie(
+      title,
+      description,
+      release_year,
+      director,
+      rating,
+      category,
+    );
     res.redirect('/movies');
   },
 

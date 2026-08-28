@@ -5,13 +5,32 @@ async function getAllMovies() {
   return rows;
 }
 
-async function addMovie(title, description, release_year, director, rating) {
-  await pool.query(
+async function addMovie(
+  title,
+  description,
+  release_year,
+  director,
+  rating,
+  categories,
+) {
+  const { rows } = await pool.query(
     `INSERT INTO movie
       (title, description, release_year, director, rating)
-     VALUES ($1, $2, $3, $4, $5)`,
+     VALUES ($1, $2, $3, $4, $5)
+     RETURNING id`,
     [title, description, release_year, director, rating],
   );
+
+  const movieId = rows[0].id;
+
+  for (const category_id of categories) {
+    await pool.query(
+      `
+        INSERT INTO movie_category (movie_id, category_id)
+        VALUES ($1, $2)`,
+      [movieId, category_id],
+    );
+  }
 }
 
 async function removeMovie(id) {

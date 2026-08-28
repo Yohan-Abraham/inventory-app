@@ -27,6 +27,15 @@
             </div>
           </div>
 
+          <div class="movie-category">
+            <% genres.forEach(genre => { %>
+              <label>
+                <input type="checkbox" name="category" value="<%= genre.id %>">
+                <div><%=genre.name%></div>
+              </label>
+            <% }) %>
+          </div>
+
           <label for="director">Director: </label>
           <input type="text" name="director" required />
 
