@@ -15,6 +15,7 @@ async function addMovie(title, description, release_year, director, rating) {
 }
 
 async function removeMovie(id) {
+  await pool.query('DELETE from movie_category WHERE movie_id = $1', [id]);
   await pool.query('DELETE FROM movie WHERE id = $1', [id]);
 }
 

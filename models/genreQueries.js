@@ -31,6 +31,7 @@ async function updateGenre(id, name) {
 }
 
 async function deleteGenre(id) {
+  await pool.query('DELETE FROM movie_category WHERE category_id = $1', [id]);
   await pool.query('DELETE FROM category WHERE id = ($1)', [id]);
 }
 

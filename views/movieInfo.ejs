@@ -12,6 +12,31 @@
       <div class="section-header">
         <a href="/movies"><- Back to Movies</a>
       </div>
+
+      <div class="movie-container">
+        <h1 class="movie-header">
+          <div><%=movie[0].title %></div>
+          <div>Rating: <%=movie[0].rating %></div>
+        </h1>
+        <h3>Directed by <%=movie[0].director %></h3>
+        
+        <h4>Released: <%=movie[0].release_year %></h4>
+
+        <div class="category-container">
+          <% movie.forEach(movie => { %>
+          <div class="movie-genre"><%=movie.category  %></div>
+        <% }) %>
+        </div>
+
+         <div>
+          <h3>Synopsis</h3>
+          <p class="movie-description">
+            <%=movie[0].description %>
+          </p>
+         </div>
+
+         <a href="/movies/delete/:id">Delete</a>
+      </div>
     </section>
   </body>
 </html>
