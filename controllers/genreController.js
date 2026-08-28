@@ -31,4 +31,16 @@ module.exports = {
   displayDeletePage: (req, res) => {
     res.render('deleteGenre');
   },
+
+  addNewGenre: async (req, res) => {
+    const { genre } = req.body;
+    await addGenre(genre);
+    res.redirect('/genres');
+  },
+
+  deleteGenre: async (req, res) => {
+    const { id } = req.params;
+    await deleteGenre(id);
+    res.redirect('/genres');
+  },
 };
