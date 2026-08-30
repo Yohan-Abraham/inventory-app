@@ -7,6 +7,7 @@ const {
 } = require('../models/movieQueries');
 
 const { getAllGenres } = require('../models/genreQueries');
+const { validationResult } = require('express-validator');
 
 module.exports = {
   displayAllMovies: async (req, res) => {
@@ -34,6 +35,15 @@ module.exports = {
     const category = Array.isArray(req.body.category)
       ? req.body.category
       : [req.body.category];
+
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      const genres = await getAllGenres();
+      return res.status(400).render('addMovie', {
+        genres,
+        errors: errors.array(),
+      });
+    }
 
     console.log(category);
     await addMovie(

@@ -7,6 +7,8 @@ const {
   getGenreById,
 } = require('../models/genreQueries');
 
+const { validationResult } = require('express-validator');
+
 module.exports = {
   displayAllGenres: async (req, res) => {
     const genres = await getAllGenres();
@@ -34,6 +36,13 @@ module.exports = {
 
   addNewGenre: async (req, res) => {
     const { genre } = req.body;
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).render('addGenre', {
+        errors: errors.array(),
+      });
+    }
+
     await addGenre(genre);
     res.redirect('/genres');
   },
