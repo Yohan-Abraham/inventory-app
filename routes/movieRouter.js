@@ -9,6 +9,10 @@ movieRouter.get('/new', controller.displayAddPage);
 
 movieRouter.post('/new', validator.validateMovie, controller.addMovie);
 
+movieRouter.get('/update/:id', controller.displayUpdatePage);
+
+movieRouter.post('/update/:id', controller.updateMovie);
+
 movieRouter.get('/delete/:id', controller.displayDeletePage);
 
 movieRouter.post('/delete/:id', controller.deleteMovie);

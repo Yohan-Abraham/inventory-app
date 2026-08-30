@@ -39,6 +39,7 @@ module.exports = {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       const genres = await getAllGenres();
+      console.log(errors.array());
       return res.status(400).render('addMovie', {
         genres,
         errors: errors.array(),
@@ -60,6 +61,30 @@ module.exports = {
   deleteMovie: async (req, res) => {
     const { id } = req.params;
     await removeMovie(id);
+    res.redirect('/movies');
+  },
+
+  displayUpdatePage: async (req, res) => {
+    const genres = await getAllGenres();
+    res.render('updateMovie', { genres });
+  },
+
+  updateMovie: async (req, res) => {
+    const { title, rating, release_year, director, description } = req.body;
+    const category = Array.isArray(req.body.category)
+      ? req.body.category
+      : [req.body.category];
+    const id = req.params.id;
+
+    await updateMovie(
+      id,
+      title,
+      description,
+      release_year,
+      director,
+      rating,
+      category,
+    );
     res.redirect('/movies');
   },
 };

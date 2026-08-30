@@ -65,6 +65,7 @@ async function updateMovie(
   release_year,
   director,
   rating,
+  categories,
 ) {
   await pool.query(
     `UPDATE movie
@@ -76,6 +77,20 @@ async function updateMovie(
      WHERE id = $6`,
     [title, description, release_year, director, rating, id],
   );
+
+  await pool.query(
+    `DELETE FROM movie_category
+     WHERE movie_id = $1`,
+    [id],
+  );
+
+  for (const category_id of categories) {
+    await pool.query(
+      `INSERT INTO movie_category (movie_id, category_id)
+       VALUES ($1, $2)`,
+      [id, category_id],
+    );
+  }
 }
 
 module.exports = {

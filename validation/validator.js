@@ -20,7 +20,7 @@ const validateMovie = [
     .trim()
     .notEmpty()
     .withMessage('Rating is required')
-    .isFloat({ min: 1, max: 3 })
+    .isFloat({ min: 1.0, max: 10.0 })
     .withMessage('Rating must be between 1 and 10'),
   body('release_year')
     .trim()
@@ -37,8 +37,7 @@ const validateMovie = [
   body('description')
     .optional()
     .trim()
-    .notEmpty()
-    .isLength({ min: 1, max: 200 })
+    .isLength({ min: 0, max: 200 })
     .withMessage('Description must be less than 200 characters'),
 ];
 
